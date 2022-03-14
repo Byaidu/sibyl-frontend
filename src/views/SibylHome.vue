@@ -16,16 +16,49 @@
 </template>
 
 <script>
+import { ElNotification } from 'element-plus'
 export default {
     name: "SibylHome",
     data() {
         return {
-            info: '欢迎使用 Sibyl 系统'
+            info: ''
         }
     },
+    created() {
+        this.getInfo()
+    },
     methods: {
-        setInfo: function(){
-            // TODO
+        getInfo: async function(){
+            let self = this
+            let url = 'http://localhost:7000/user'
+            this.$axios.get(url,{
+                headers: {'X-Auth-Token': this.$store.state.token}
+            }).then(function (response) {
+                self.info = response.data.result
+            }).catch(function (error) {
+                ElNotification({
+                    title: error.response.status.toString(),
+                    message: error.response.data,
+                    position: 'bottom-right',
+                    type: 'error'
+                })
+            })
+        },
+        setInfo: async function(){
+            let url = 'http://localhost:7000/user'
+            await this.$axios.post(url,{
+                info: this.info
+            }, {
+                headers: {'X-Auth-Token': this.$store.state.token}
+            }).catch(function (error) {
+                ElNotification({
+                    title: error.response.status.toString(),
+                    message: error.response.data,
+                    position: 'bottom-right',
+                    type: 'error'
+                })
+            })
+            this.getInfo()
         }
     }
 }
