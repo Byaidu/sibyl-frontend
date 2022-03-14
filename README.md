@@ -1,4 +1,4 @@
-# sibyl-front
+# sibyl-frontend
 
 ## Project setup
 ```
