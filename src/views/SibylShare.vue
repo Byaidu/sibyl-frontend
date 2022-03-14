@@ -5,13 +5,13 @@
   </el-table>
   <br>
   <el-form :inline="true">
-      <el-form-item label="修改可读权限">
+    <el-form-item label="修改可读权限">
       <el-input v-model="username" placeholder="用户名"></el-input>
-      </el-form-item>
-      <el-form-item>
+    </el-form-item>
+    <el-form-item>
       <el-button type="primary" @click="addAssignments">添加</el-button>
       <el-button type="danger" @click="delAssignments">删除</el-button>
-      </el-form-item>
+    </el-form-item>
   </el-form>
 </template>
 

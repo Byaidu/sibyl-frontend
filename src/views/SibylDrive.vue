@@ -12,31 +12,31 @@
   <div v-show="this.$route.params.project">
     <br>
     <el-form :inline="true">
-        <el-form-item label="新建文件夹">
-        <el-input v-model="dirname" placeholder="文件夹名称"></el-input>
-        </el-form-item>
-        <el-form-item>
-        <el-button type="primary" @click="makeDir">新建</el-button>
-        </el-form-item>
+      <el-form-item label="新建文件夹">
+      <el-input v-model="dirname" placeholder="文件夹名称"></el-input>
+      </el-form-item>
+      <el-form-item>
+      <el-button type="primary" @click="makeDir">新建</el-button>
+      </el-form-item>
     </el-form>
     <el-table v-loading="loading" :data="file" style="width: 100%" @row-click="getFile">
-        <el-table-column prop="name" label="文件 | 点击下载"/>
-        <el-table-column prop="size" label="大小"/>
-        <el-table-column prop="time" label="日期" :formatter="dateFormatter"/>
+      <el-table-column prop="name" label="文件 | 点击下载"/>
+      <el-table-column prop="size" label="大小"/>
+      <el-table-column prop="time" label="日期" :formatter="dateFormatter"/>
     </el-table>
     <br>
     <el-upload
-        drag
-        :action="'http://localhost:7000' + this.$route.path"
-        :headers="{'X-Auth-Token': this.$store.state.token}"
-        :on-success="dirList"
-        :on-error="uploadError"
-        multiple
+      drag
+      :action="'http://localhost:7000' + this.$route.path"
+      :headers="{'X-Auth-Token': this.$store.state.token}"
+      :on-success="dirList"
+      :on-error="uploadError"
+      multiple
     >
-        <el-icon class="el-icon--upload"><upload-filled /></el-icon>
-        <div class="el-upload__text">
-        拖拽或 <em>点击上传文件</em>
-        </div>
+      <el-icon class="el-icon--upload"><upload-filled /></el-icon>
+      <div class="el-upload__text">
+      拖拽或 <em>点击上传文件</em>
+      </div>
     </el-upload>
   </div>
 </template>

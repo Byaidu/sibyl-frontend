@@ -1,10 +1,16 @@
 <template>
   <div class="common-layout">
     <el-container>
-      <el-header><SibylHeader/></el-header>
+      <el-header>
+        <SibylHeader/>
+      </el-header>
       <el-container>
-        <el-aside width="200px"><el-scrollbar><SibylAside/></el-scrollbar></el-aside>
-        <el-main><el-scrollbar><router-view/></el-scrollbar></el-main>
+        <el-aside width="200px"><el-scrollbar>
+          <SibylAside/>
+        </el-scrollbar></el-aside>
+        <el-main><el-scrollbar>
+          <router-view/>
+        </el-scrollbar></el-main>
       </el-container>
     </el-container>
   </div>
